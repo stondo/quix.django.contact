@@ -5,9 +5,15 @@ from django.core.exceptions import ImproperlyConfigured
 from django.template.loader import render_to_string
 
 class ContactForm(forms.Form):
-    name = forms.CharField(max_length=100)
-    email = forms.EmailField(max_length=100)
-    subject = forms.CharField(max_length=200)
+    name = forms.CharField(max_length=50, label="Nome", required=True)
+    last_name = forms.CharField(max_length=50, label="Cognome", required=True)
+    address = forms.CharField(max_length=50, label="Indirizzo", required=True)
+    city = forms.CharField(max_length=50, label="Città", required=True)
+    cap = forms.CharField(max_length=5, label="C.A.P.", required=True)
+    provincia = forms.CharField(max_length=2, label="Provincia")
+    tel = forms.CharField(max_length=30, label="Telefono")
+    email = forms.EmailField(max_length=100, required=True)
+    subject = forms.CharField(max_length=100)
     message = forms.CharField(widget=forms.Textarea(), max_length=500)
     
     def send_email(self):
