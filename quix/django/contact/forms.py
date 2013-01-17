@@ -15,8 +15,8 @@ class ContactForm(forms.Form):
     provincia = forms.CharField(max_length=2, label="Provincia")
     tel = forms.CharField(max_length=30, label="Telefono")
     email = forms.EmailField(max_length=100, required=True)
-    subject = forms.CharField(max_length=100)
-    message = forms.CharField(widget=forms.Textarea(), max_length=500)
+    subject = forms.CharField(max_length=100, label="Oggetto")
+    message = forms.CharField(widget=forms.Textarea(attrs={'cols': 20, 'rows': 30}), max_length=500, label="Messaggio")
     
     def send_email(self):
         """
