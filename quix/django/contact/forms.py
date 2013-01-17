@@ -1,3 +1,5 @@
+# coding=UTF-8
+
 from django.conf import settings
 from django import forms
 from django.core.mail import send_mail
@@ -8,7 +10,7 @@ class ContactForm(forms.Form):
     name = forms.CharField(max_length=50, label="Nome", required=True)
     last_name = forms.CharField(max_length=50, label="Cognome", required=True)
     address = forms.CharField(max_length=50, label="Indirizzo", required=True)
-    city = forms.CharField(max_length=50, label="Citt‡", required=True)
+    city = forms.CharField(max_length=50, label="Citt√†", required=True)
     cap = forms.CharField(max_length=5, label="C.A.P.", required=True)
     provincia = forms.CharField(max_length=2, label="Provincia")
     tel = forms.CharField(max_length=30, label="Telefono")
