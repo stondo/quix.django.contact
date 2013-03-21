@@ -10,9 +10,18 @@ module = import_module(module_name)
 class_instance = getattr(module, full_class.split('.')[-1])
 
 class ContactView(FormView):
-    template_name = getattr(settings, 'CONTACT_FORM_TEMPLATE', 'contact/form.html')
+    if request.session['flavour'] == 'full':
+        template_name = getattr(settings, 'CONTACT_FORM_TEMPLATE', 'contact/form.html')
+        success_url = reverse_lazy("contact-success")
+    elif request.session['flavour'] == 'mobile':
+        template_name = getattr(settings, 'CONTACT_FORM_MOBILE_TEMPLATE', 'contact/mobileForm.html')
+        success_url = reverse_lazy("contact-mobileSuccess")
+    else:
+        template_name = getattr(settings, 'CONTACT_FORM_TEMPLATE', 'contact/form.html')
+        success_url = reverse_lazy("contact-success")
+
     form_class = class_instance
-    success_url = reverse_lazy("contact-success")
+
 
     def form_valid(self, form):
         form.send_email()
