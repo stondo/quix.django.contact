@@ -32,18 +32,18 @@ class ContactView(FormView):
 
 
     def get_success_url(self):
-        if self.request.session['flavour'] == 'full':
+        if self.request.COOKIES.get('flavour') == 'full':
             return reverse_lazy("contact-success")
-        elif self.request.session['flavour'] == 'mobile':
+        elif self.request.COOKIES.get('flavour') == 'mobile':
             return reverse_lazy("contact-mobileSuccess")
         else:
             return reverse_lazy("contact-success")
 
 
     def get_template_names(self):
-        if self.request.session['flavour'] == 'full':
+        if self.request.COOKIES.get('flavour') == 'full':
             return getattr(settings, 'CONTACT_FORM_TEMPLATE', 'contact/form.html')
-        elif self.request.session['flavour'] == 'mobile':
+        elif self.request.COOKIES.get('flavour') == 'mobile':
             return getattr(settings, 'CONTACT_FORM_MOBILE_TEMPLATE', 'contact/mobileForm.html')
         else:
             return getattr(settings, 'CONTACT_FORM_TEMPLATE', 'contact/form.html')
