@@ -18,7 +18,7 @@ class ContactForm(forms.Form):
     city = forms.CharField(max_length=50, label="Città", required=True)
     cap = forms.CharField(max_length=5, label="C.A.P.", required=True)
 #    provincia = forms.CharField(max_length=2, label="Provincia")
-    provincia = forms.forms.ChoiceField(widget=forms.Select, choices=PROVINCE, label="Provincia")
+    provincia = forms.ChoiceField(widget=forms.Select, choices=PROVINCE, label="Provincia")
     tel = forms.CharField(max_length=30, label="Telefono")
     email = forms.EmailField(max_length=100, required=True)
     subject = forms.CharField(max_length=100, label="Oggetto")
