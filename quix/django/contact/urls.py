@@ -10,9 +10,9 @@ mobile_template_name = getattr(settings, 'CONTACT_SUCCESS_MOBILE_TEMPLATE', 'con
 
 urlpatterns = patterns('',
     url(r'^$', ContactView.as_view(), name="contact-form"),
-    url(r'^success/$', TemplateView.as_view(template_name=template_name),
+    url(r'^success/$', TemplateView.as_view(template_name=full_template_name),
         name="contact-success"),
-    url(r'^mobilesuccess/$', TemplateView.as_view(template_name=template_name),
+    url(r'^mobilesuccess/$', TemplateView.as_view(template_name=mobile_template_name),
         name="contact-mobileSuccess"),
 
 )
