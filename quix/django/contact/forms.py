@@ -23,6 +23,7 @@ class ContactForm(forms.Form):
     email = forms.EmailField(max_length=100, required=True)
     subject = forms.CharField(max_length=100, label="Oggetto")
     message = forms.CharField(widget=forms.Textarea(attrs={'cols': 40, 'rows': 10}), max_length=500, label="Messaggio")
+    dgs = forms.BooleanField(required=True, label="Autorizzo il trattamento dei dati personali secondo il:")
     
     def send_email(self):
         """

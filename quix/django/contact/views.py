@@ -44,8 +44,7 @@ class ContactView(FormView):
         if self.request.COOKIES.get('flavour') == 'full':
             return getattr(settings, 'CONTACT_FORM_TEMPLATE', 'contact/form.html')
         elif self.request.COOKIES.get('flavour') == 'mobile':
-            return getattr(settings, 'CONTACT_FORM_MOBILE_TEMPLATE', 'mobile/baseMobile.html')
-#            return getattr(settings, 'CONTACT_FORM_MOBILE_TEMPLATE', 'contact/mobileForm.html')
+            return getattr(settings, 'CONTACT_FORM_MOBILE_TEMPLATE', 'contact/mobileForm.html')
         else:
             return getattr(settings, 'CONTACT_FORM_TEMPLATE', 'contact/form.html')
 
